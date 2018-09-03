@@ -1,0 +1,70 @@
+  using System;
+
+class MainClass {
+
+//String Symetry
+//can be modified
+
+
+   public static bool check2(String n){
+    int i = 0;
+    int j = n.Length-1;
+    int balance = 0;
+   
+   //make an array
+   string array1 = "{[(abcdef";
+    string array2= "}])abcdef";
+   
+   //looop
+   
+   while(i<n.Length && j>0){
+
+    /////check character is in right side
+    if (array1.Contains(n[i].ToString())){
+       
+       //get that character at index
+       int val = array1.IndexOf(n[i]);
+       balance = balance + 1;
+      
+
+      //then get index of campanion
+      // Console.WriteLine("Balance "+balance);
+      
+      if(n[j]==array2[val]){
+        balance = balance -1 ;
+      }
+     
+    }
+    
+
+       i++;
+       j--;
+    
+
+
+
+
+
+
+
+  
+   }
+    if (balance == 0){
+       return true;
+    }else{
+      return false;
+    }
+   }
+
+    
+  public static void Main (string[] args) {
+
+       Console.WriteLine (check2("[]"));
+       Console.WriteLine (check2("[aba]"));
+   
+       Console.WriteLine(check2("[a]c[b]"));
+
+  }
+
+
+  }
