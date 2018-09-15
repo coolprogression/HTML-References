@@ -1,4 +1,8 @@
 import java.util.*;
+// Head over to SharedTags.java to write your solution
+
+
+
 public class Candidate {
   public String name;
   public ArrayList<String> tags;
@@ -9,13 +13,9 @@ public class Candidate {
     this.selected = selected;
   }
   
-  
-  
-    public static void main(String[] args) {
+  public static void main(String[] args){
     
-    System.out.println("Hello Codiva");
-    
-    ArrayList<String> one  = new ArrayList<String>();
+     ArrayList<String> one  = new ArrayList<String>();
     one.add("Woo");
     one.add("WSo");
     one.add("Two");
@@ -34,26 +34,42 @@ public class Candidate {
     
     Candidate can1 = new Candidate("Wend",one,true);
     Candidate can2 = new Candidate("Wensd",two,true);
-    Candidate can = new Candidate("Wenad",three,true);
-
-
-   ArrayList<List<String>> lists= new ArrayList<List<String>>();
-    lists.add(can1.tags);
-    lists.add(can.tags);
-    lists.add(can2.tags);
-
-    ArrayList<String> result = new ArrayList<String>();
-    result.addAll(lists.get(1));
-    for (ListIterator<List<String>> iter = lists.listIterator(1); iter.hasNext(); ) {
-        result.retainAll(iter.next());
-    }
-
-    System.out.println(result);
- 
-   
+   Candidate can3 = new Candidate("Wenad",three,true);
+    
+    ArrayList<Candidate> cani = new ArrayList<Candidate>();
+    cani.add(can1);
+    cani.add(can2);
+    cani.add(can3);
+    
+    System.out.println(SharedTags.sharedTags(cani));
+    
   }
+  
 }
 
 
-
-
+public class SharedTags {
+  public static ArrayList<String> sharedTags(ArrayList<Candidate> candidates) {
+    
+    
+    
+    ArrayList<List<String>> taglist = new ArrayList<List<String>>();
+    for(int i = 0; i<candidates.size(); i++){
+      
+      if(candidates.get(i).selected == true){
+      taglist.add(candidates.get(i).tags);
+      }
+      
+  }
+    
+    ArrayList<String> result = new ArrayList<String>();
+    result.addAll(taglist.get(1));
+    for (ListIterator<List<String>> iter = taglist.listIterator(1); iter.hasNext(); ) {
+        result.retainAll(iter.next());
+}
+    return result;
+}
+  
+  
+      
+}
