@@ -1,0 +1,59 @@
+import java.util.*;
+public class Candidate {
+  public String name;
+  public ArrayList<String> tags;
+  public boolean selected;
+  public Candidate(String name, ArrayList<String> tags, boolean selected) {
+    this.name = name;
+    this.tags = tags;
+    this.selected = selected;
+  }
+  
+  
+  
+    public static void main(String[] args) {
+    
+    System.out.println("Hello Codiva");
+    
+    ArrayList<String> one  = new ArrayList<String>();
+    one.add("Woo");
+    one.add("WSo");
+    one.add("Two");
+    
+    ArrayList<String> two  = new ArrayList<String>();
+    two.add("Woo");
+    two.add("WSo");
+    two.add("ao");
+    
+    
+    ArrayList<String> three  = new ArrayList<String>();
+    
+    three.add("Woo");
+    three.add("WSo");
+    three.add("Tswo");
+    
+    Candidate can1 = new Candidate("Wend",one,true);
+    Candidate can2 = new Candidate("Wensd",two,true);
+    Candidate can = new Candidate("Wenad",three,true);
+
+
+   ArrayList<List<String>> lists= new ArrayList<List<String>>();
+    lists.add(can1.tags);
+    lists.add(can.tags);
+    lists.add(can2.tags);
+
+    ArrayList<String> result = new ArrayList<String>();
+    result.addAll(lists.get(1));
+    for (ListIterator<List<String>> iter = lists.listIterator(1); iter.hasNext(); ) {
+        result.retainAll(iter.next());
+    }
+
+    System.out.println(result);
+ 
+   
+  }
+}
+
+
+
+
